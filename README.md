@@ -1,6 +1,7 @@
 # Level1_3_R
 細胞工学別冊 次世代シーケンサー Dry解析超入門 Level1 [3] Rの使い方で利用したソースコード
 
+以下のコマンドで、紙面の方で実行した事を再現できます。
 ```
 git clone https://github.com/kokitsuyuzaki/Level1_3_R/
 cd Level1_3_R
