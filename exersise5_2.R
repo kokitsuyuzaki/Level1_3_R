@@ -21,7 +21,6 @@ png(file="Biplot_PCA2.png")
 biplot(pca2)
 dev.off()
 
-
 # 細胞をソートする際の表面マーカーで色を付ける
 Label2 <- data.frame(group_name=Count2$group_name, Well=Count2$Well, Color=NA)
 
