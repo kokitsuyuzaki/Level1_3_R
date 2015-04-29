@@ -3,8 +3,8 @@
 #############################################
 
 # データをとってくる
-download.file("http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE54006&format=file&file=GSE54006%5Fumitab%2Etxt%2Egz", destfile="Count.txt.gz")
-download.file("http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE54006&format=file&file=GSE54006%5Fexperimental%5Fdesign%2Etxt%2Egz", destfile="ExpDesign.txt.gz")
+download.file("http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE54006&format=file&file=GSE54006%5Fumitab%2Etxt%2Egz", destfile="Count.txt.gz") # 発現量データ
+download.file("http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE54006&format=file&file=GSE54006%5Fexperimental%5Fdesign%2Etxt%2Egz", destfile="ExpDesign.txt.gz") # 実験情報データ
 
 # ファイルを解凍する
 install.packages("R.utils") # パッケージインストール（一度やればよい）
@@ -26,16 +26,16 @@ head(ExpDesign)
 
 
 ################### Count ###################
-# 遺伝子発現を少しも検出できていないゼロ細胞が90個ある
-length(which(colSums(Count) == 0))
-# ゼロ細胞を取り除く
-Count <- Count[, which(colSums(Count) != 0)]
-# 237 => 228細胞になる
-ncol(Count)
+which(colSums(Count) == 0) # 90個、発現量0のウェルがある
+ncol(Count) # 4590ウェル
+Count <- Count[, which(colSums(Count) != 0)] # ゼロ細胞を取り除く
+ncol(Count) # 4500ウェルまで減る
+
 # IDが書かれた列を追加する
 Count <- t(Count)
 # 列名をWellにする
 Count <- data.frame(Count, Well=sub("X", "", rownames(Count)))
+
 
 
 ################# ExpDesign #################

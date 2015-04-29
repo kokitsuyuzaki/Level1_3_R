@@ -16,7 +16,7 @@ A # オブジェクト名を打つと、値が画面に出力される（print(A
 A * 2 # (1 + 1) × 2を実行した事と同じ
 
 # 値の型
-1 + "1" # 数値と文字列を足すことはできない
+try(1 + "1") # 数値と文字列を足すことはできない
 paste0("ABCDE", "1") # 文字列同士を連結することはできる
 paste0("ABCDE", 1) # paste0関数の仕様で、文字列と数値を連結することはできる
 
@@ -49,33 +49,35 @@ A * B
 # ベクトル同士の内積
 A %*% B
 # 文字でもベクトル
-D <- c("A", "B", "C", "A", "AA")
+C <- c("A", "B", "C", "A", "AA")
 # Aがどこの場所にあるか
-which(D == "A")
+which(C == "A")
 # lengthと組み合わせて使うことが多い
-length(which(D == "A"))
+length(which(C == "A"))
 
 ######################### 因子 ##########################
 # 同じものが複数
-E <- factor(c("A", "A", "B", "B", "B"))
-nlevels(E) # 2つある
-levels(E) # A, Bがある
+D <- factor(c("A", "A", "B", "B", "B"))
+nlevels(D) # 2つある
+levels(D) # A, Bがある
 
 ######################### 行列 ##########################
 # matrix()で行列を作成
-C <- matrix(runif(6), nrow=2, ncol=3)
+E <- matrix(runif(6), nrow=2, ncol=3)
+E[1,]
+E[,2]
 # 行数、列数
-nrow(C)
-ncol(C)
-dim(C)
+nrow(E)
+ncol(E)
+dim(E)
 # cbind、rbind
 cbind(A, B)
-rbind(C, A, B)
+rbind(E, A, B)
 # 行レベルでの和、列レベルでの和・平均値
-rowSums(C)
-colSums(C)
-rowMeans(C)
-colMeans(C)
+rowSums(E)
+colSums(E)
+rowMeans(E)
+colMeans(E)
 
 ##################### データフレーム #####################
 # 行列は一つの型しか扱えない
@@ -86,14 +88,20 @@ iris$Petal.Length # $で各列にアクセスできる
 
 ######################## リスト #########################
 # もはや行列で表現できないようなデータもリストで表現できる
-F <- list(X = c(1,2,3), Y = matrix(runif(9), nrow=3), Z = TRUE)
-F$X # $で各要素にアクセスできる
-F$Y
-F$Z
+G <- list(X = c(1,2,3), Y = matrix(runif(9), nrow=3), Z = TRUE)
+G$X # $で各要素にアクセスできる
+G$Y
+G$Z
 
 ############### Rオブジェクトに対してのあれこれ #############
 is(iris)
 str(iris)
+str(G)
+x <- runif(10)
+y <- runif(10)
+linear_reg <- lm(y ~ x)
+str(linear_reg)
+linear_reg$coefficients
 
 ################### データ保存・読み込み ##################
 # 保存
@@ -121,8 +129,8 @@ ls()
 
 # read.table時に文字がfactor化されてしまう（よくはまる箇所）
 write.table(data.frame(moji = c("A", "B", "C", "D", "E"), suuji = runif(5)), "factor_test.tsv", sep="\t")
-G <- read.table("factor_test.tsv")
-G[,1]
+H <- read.table("factor_test.tsv")
+H[,1]
 # strigsAsFactorsをFALSEとしておくことでfactor化を防ぐことができる
-G <- read.table("factor_test.tsv", stringsAsFactors = FALSE)
-G[,1]
+H <- read.table("factor_test.tsv", stringsAsFactors = FALSE)
+H[,1]
