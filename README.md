@@ -19,4 +19,5 @@ source("exersise5.R") # 演習5 : データの可視化（plot3d）
 source("plotly.R") # plotlyにより外れ値細胞のラベルを見つける
 source("exersise4_2.R") # 演習4 : データ解析（PCA 2回目）
 source("exersise5_2.R") # 演習5 :　データの可視化（plot3d 2回目）
+source("plotly_2.R") # plotlyにより外れ値細胞のラベルを見つける
 ```
