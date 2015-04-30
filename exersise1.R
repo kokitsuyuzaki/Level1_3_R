@@ -6,3 +6,6 @@
 d <- runif(10)
 # プロット
 plot(d)
+
+getwd() # 作業ディレクトリ
+setwd("~/Desktop") # ディレクトリ変更
