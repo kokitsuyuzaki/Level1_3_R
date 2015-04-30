@@ -99,9 +99,9 @@ str(iris)
 str(G)
 x <- runif(10)
 y <- runif(10)
-linear_reg <- lm(y ~ x)
-str(linear_reg)
-linear_reg$coefficients
+lr <- lm(y ~ x)
+str(lr)
+lr$coefficients
 
 ################### データ保存・読み込み ##################
 # 保存

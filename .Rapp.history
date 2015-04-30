@@ -1,3 +1,7 @@
+NumCell <- c(10^2, 10^3, 10^4, 10^5, 10^6)
+Time <- c(1.5, 10.1, 207.6, "XXX", "XXX")
+plot(Time[1:3], log10(NumCell[1:3]), xlab="sec", ylab="log10(Number of Cells)")
+NumCell
 NumCell+1
 34*60
 34*60+50.8
@@ -867,7 +871,6 @@ dds <- DESeqDataSet(se, ~ batch + condition)
 library("DESeq2")
 biocLite("DESeq2")
 library("DESeq2")
-library("DESeq2")
 library("GO.db")
 biocLite("DESeq2")
 y
@@ -885,254 +888,246 @@ library("metaSeq")
 biocLite("metaSeq")
 library("metaSeq")
 example("metaSeq")
-library("NOISeq")
-biocLite("NOISeq")
-library("DESeq")
-biocLite("DESeq")
-library("DESeq")
-biocLite("DESeq")
-library("DESeq")
-str(F)
-G <- list(X = c(1,2,3), Y = matrix(runif(9), nrow=3), Z = TRUE)G$X # データフレームと同様に$で各要素にアクセスできるG$YG$Z
-str(G)
-library("MASS")
-?MASS
-example(MASS)
-example("MASS")
-ls("package:MASS")
-?mca
-glm
-?glm
-counts <- c(18,17,15,20,10,20,25,13,12)#
-outcome <- gl(3,1,9)#
-treatment <- gl(3,3)#
-print(d.AD <- data.frame(treatment, outcome, counts))#
-glm.D93 <- glm(counts ~ outcome + treatment, family = poisson())
-str(glm.D93)
-x <- runif(10)#
-y <- runif(10)#
-linear_reg <- lm(y ~ x)#
-str(linear_reg)
-linear_reg
-str(linear_reg)
-linear_reg <- lm(runif(10) ~ runif(10))#
-str(linear_reg)
-x <- runif(10)#
-y <- runif(10)#
-linear_reg <- lm(y ~ x)
-linear_reg$coefficients
-Count <- read.table("Count.txt", row.names=1, header=TRUE, sep="\t")#
-ExpDesign <- read.table("ExpDesign.txt", row.names=1, header=TRUE, sep="\t", skip=6)
-getwd()
 setwd("~/Dropbox/Paper/細胞工学/R")
-Count <- read.table("Count.txt", row.names=1, header=TRUE, sep="\t")#
-ExpDesign <- read.table("ExpDesign.txt", row.names=1, header=TRUE, sep="\t", skip=6)
-which(colSums(Count) == 0) # 90個、発現量0の細胞があるncol(Count)Count <- Count[, which(colSums(Count) != 0)] # ゼロ細胞を取り除くncol(Count) # 237 => 228細胞になる
-dim(Count)
-head(ExpDesign)
-# 列名をWellにする#
-colnames(ExpDesign)[14] <- "Well"#
-#
-levels(ExpDesign$group_name) # Cell typeに関する情報が、group_name列に記述されている#
-which(ExpDesign$group_name == "B cell") # B cell (CD19+/B220+) : 48細胞#
-which(ExpDesign$group_name == "CD8+pDC") # pCD (CD11c+/CD8a+/PDCA-1+) : 96細胞#
-which(ExpDesign$group_name == "monocyte_or_neutrophil") # Monocyte (Gr-1+/CD11b+) : 48細胞#
-which(ExpDesign$group_name == "NK_cell") # NK (NK-1.1+) : 48細胞#
-#
-# 4種類の細胞のデータだけを取り出す#
-ExpDesign <- rbind(#
-  ExpDesign[which(ExpDesign$group_name == "B cell"), ],#
-  ExpDesign[which(ExpDesign$group_name == "CD8+pDC"), ],#
-  ExpDesign[which(ExpDesign$group_name == "monocyte_or_neutrophil"), ],#
-  ExpDesign[which(ExpDesign$group_name == "NK_cell"), ]#
-  )#
-# 48 + 96 + 48 + 48 = 240になってる#
-nrow(ExpDesign)#
-# 1細胞のみ入っているものだけ取り出す#
-sort(unique(ExpDesign$number_of_cells))#
-ExpDesign <- ExpDesign[which(ExpDesign$number_of_cells == "1"), ]#
-# 1細胞だけである事を確認#
-sort(unique(ExpDesign$number_of_cells))#
-# 237に減る#
-nrow(ExpDesign)
-ExpDesign[, c(11,14)]
-# パッケージ読み込み#
-library("kernlab")#
-library("rgl")#
-#
-# データ読み込み#
-load("Count.Rdata")#
-load("pca.Rdata")#
-load("kernelpca.Rdata")
-install.packages("kernlab")
 setwd("Level1_3_R/")
-library("kernlab")#
-library("rgl")#
-#
-# データ読み込み#
-load("Count.Rdata")#
-load("pca.Rdata")#
-load("kernelpca.Rdata")
 source("exersise1.R")
 source("exersise2.R")
-source("exersise2.R")
-system("ls")
+source("exersise3.R")
+source("exersise4.R")
+source("exersise5.R")
+source("plotly.R")
+source("exersise4_2.R")
+source("exersise5_2.R")
+source("exersise1.R")
 source("exersise2.R")
 source("exersise3.R")
-getwd()
 source("exersise4.R")
-library("kernlab")#
-library("rgl")#
-#
-# データ読み込み#
-load("Count.Rdata")#
-load("pca.Rdata")#
-load("kernelpca.Rdata")
-png(file="Contribution_PCA.png")#
-plot(pca$sdev/sum(pca$sdev), xlab="Principal Components", ylab="Proportion  of Variance", main="Contribution rate of the Principal Component")#
-dev.off()
-ls()
-plot(kernelpca$sdev/sum(kernelpca$sdev), xlab="Principal Components", ylab="Proportion  of Variance", main="Contribution rate of the Principal Component")
-str(kernelpca)
-str(pca)
+source("exersise5.R")
 source("plotly.R")
-system("subl ../Intro.R")
-makePlotly <- makePloty
-makePlotly("antiplastics", "t04mhock2b")
-Label <- data.frame(group_name=Count$group_name, Well=Count$Well, Color=NA)#
-# Class I : オレンジ, B cell#
-Label$Color[which(Label$group_name == "B cell")] <- rgb(1, 0.25, 0, 0.5)#
-# Class III : 紫, NK T cell#
-Label$Color[which(Label$group_name == "NK_cell")] <- rgb(0.75, 0, 1, 0.5)#
-# Class V : 青, pDC#
-Label$Color[which(Label$group_name == "CD8+pDC")] <- rgb(0, 0, 1, 0.5)#
-# Class VII : 黒, Monocyte#
-Label$Color[which(Label$group_name == "monocyte_or_neutrophil")] <- rgb(0, 0, 0, 0.5)
-# 主成分分析#
-plot3d(pca$rotation[, 1:3], xlab="PC1", ylab="PC2", zlab="PC3", col=Label$Color)#
-writeWebGL(dir="PCA_3d", width=500)#
-#
-# カーネル主成分分析（ガウスカーネル）#
-plot3d(cbind(pcv(kernelpca)[,1], pcv(kernelpca)[,2], pcv(kernelpca)[,3]), xlab="PC1", ylab="PC2", zlab="PC3", col=Label$Color)#
-writeWebGL(dir="KernelPCA_Gaussian_3d", width=500)
-library("rgl")
-install.packages("rgl")
-library("rgl")
-# 主成分分析#
-plot3d(pca$rotation[, 1:3], xlab="PC1", ylab="PC2", zlab="PC3", col=Label$Color)#
-writeWebGL(dir="PCA_3d", width=500)#
-#
-# カーネル主成分分析（ガウスカーネル）#
-plot3d(cbind(pcv(kernelpca)[,1], pcv(kernelpca)[,2], pcv(kernelpca)[,3]), xlab="PC1", ylab="PC2", zlab="PC3", col=Label$Color)#
-writeWebGL(dir="KernelPCA_Gaussian_3d", width=500)
-makePlotly("antiplastics", "t04mhock2b")
-biplot(pca)
-png(file="Contribution_PCA.png")#
-plot(pca$sdev/sum(pca$sdev), xlab="Principal Components", ylab="Proportion  of Variance", main="Contribution rate of the Principal Component")#
-dev.off()
-biplot(kernelpca)
-biplot(pca)
-require(graphics)#
-biplot(princomp(USArrests))
-?biplot
-biplot(pca, arrow.len=0)
-plot(pca$sdev/sum(pca$sdev), xlab="Principal Components", ylab="Proportion  of Variance", main="Contribution rate of the Principal Component")
-plot3d(pca$rotation[, 1:3], xlab="PC1", ylab="PC2", zlab="PC3", col=Label$Color)#
-writeWebGL(dir="PCA_3d", width=500)
-?prcomp
-head(Count)
-head(t(Count[, 3:ncol(Count)]))
-head(Count)
-head(Count[,1:10])
-which(Count$Well == "14_1875")
-setdiff(1:nrow(Count), which(Count$Well == "14_1875"))
-pca_data <- scale(t(Count[setdiff(1:nrow(Count), which(Count$Well == "14_1875")), 3:ncol(Count)]), scale=TRUE) # 正規化（平均値0, 分散1にする）#
-pca <- prcomp(pca_data)
-pca_data2 <- scale(t(Count[setdiff(1:nrow(Count), which(Count$Well == "14_1875")), 3:ncol(Count)]), scale=TRUE) # 正規化（平均値0, 分散1にする）#
-pca2 <- prcomp(pca_data2)#
-save(pca2, file="pca2.Rdata")
-plot3d(pca2rotation[,1:3])
-plot3d(pca2$rotation[,1:3])
-png(file="Contribution_PCA2.png")#
-plot(pca$sdev/sum(pca$sdev), xlab="Principal Components", ylab="Proportion  of Variance", main="Contribution rate of the Principal Component")#
-dev.off()
-biplot(pca)
-biplot(pca2)
-source("exersise4.R")
-plot3d(pca$rotation[, 1:3], xlab="PC1", ylab="PC2", zlab="PC3", col=Label$Color)
 source("exersise4_2.R")
-head(Label)
-which(Label$Well == "14_1875")
-save(Count2, file="Count2.Rdata")
-Label <- data.frame(group_name=Count2$group_name, Well=Count2$Well, Color=NA)
-head(Count2)
+source("exersise5_2.R")
+source("plotly_2.R")
+makePlotly("antiplastics", "t04mhock2b")
+makePlotly("antiplastics", "t04mhock2b")
+makePlotly("antiplastics", "t04mhock2b")
+makePlotly("antiplastics", "t04mhock2b")
+source("plotly_2.R")
+source("plotly_2.R")
+makePlotly2("antiplastics", "t04mhock2b")
+pca2$rotation[which(Label2$group_name == "B cell"), 1]
+pca2$rotation[which(Label2$group_name == "B cell"), 2]
+makePlotly2("antiplastics", "t04mhock2b")
+Label2$Well[which(Label2$group_name == "NK_cell")]
+DC
+pca2
+BCell <- list(#
+    x = pca2$rotation[which(Label2$group_name == "B cell"), 1],#
+    y = pca2$rotation[which(Label2$group_name == "B cell"), 2],#
+    z = pca2$rotation[which(Label2$group_name == "B cell"), 3],#
+    mode = "markers+text",#
+    name = "B Cell",#
+    text = Label2$Well[which(Label2$group_name == "B cell")],#
+    textfont = list(#
+      color = "rgb(102, 102, 102)",#
+      size = 7),#
+    marker = list(#
+      size = 12,#
+      line = list(#
+        color = "rgba(217, 217, 217, 0.14)",#
+        width = 0.5#
+      ),#
+      opacity = 0.8#
+    ),#
+    type = "scatter3d"#
+  )
+BCell
+makePlotly2("antiplastics", "t04mhock2b")
+as.numeric(pca2$rotation[which(Label2$group_name == "NK_cell"), 1])
+user="antiplastics"
+apikey="t04mhock2b"
+set_credentials_file(user, apikey)#
+  py <- plotly()
+py
+BCell <- list(#
+    x = pca2$rotation[which(Label2$group_name == "B cell"), 1],#
+    y = pca2$rotation[which(Label2$group_name == "B cell"), 2],#
+    z = pca2$rotation[which(Label2$group_name == "B cell"), 3],#
+    mode = "markers+text",#
+    name = "B Cell",#
+    text = Label2$Well[which(Label2$group_name == "B cell")],#
+    textfont = list(#
+      color = "rgb(102, 102, 102)",#
+      size = 7),#
+    marker = list(#
+      size = 12,#
+      line = list(#
+        color = "rgba(217, 217, 217, 0.14)",#
+        width = 0.5#
+      ),#
+      opacity = 0.8#
+    ),#
+    type = "scatter3d"#
+  )#
+#
+  NKTCell <- list(#
+    x = pca2$rotation[which(Label2$group_name == "NK_cell"), 1],#
+    y = pca2$rotation[which(Label2$group_name == "NK_cell"), 2],#
+    z = pca2$rotation[which(Label2$group_name == "NK_cell"), 3],#
+    mode = "markers+text",#
+    name = "NKT Cell",#
+    text = Label2$Well[which(Label2$group_name == "NK_cell")],#
+    textfont = list(#
+      color = "rgb(102, 102, 102)",#
+      size = 7),#
+    marker = list(#
+      size = 12,#
+      line = list(#
+        color = "rgba(50, 217, 217, 0.14)",#
+        width = 0.5#
+      ),#
+      opacity = 0.8#
+    ),#
+    type = "scatter3d"#
+  )#
+#
+  DC <- list(#
+    x = pca2$rotation[which(Label2$group_name == "CD8+pDC"), 1],#
+    y = pca2$rotation[which(Label2$group_name == "CD8+pDC"), 2],#
+    z = pca2$rotation[which(Label2$group_name == "CD8+pDC"), 3],#
+    mode = "markers+text",#
+    name = "DC",#
+    text = Label2$Well[which(Label2$group_name == "CD8+pDC")],#
+    textfont = list(#
+      color = "rgb(102, 102, 102)",#
+      size = 7),#
+    marker = list(#
+      size = 12,#
+      line = list(#
+        color = "rgba(217, 50, 217, 0.14)",#
+        width = 0.5#
+      ),#
+      opacity = 0.8#
+    ),#
+    type = "scatter3d"#
+  )#
+#
+  Monocyte <- list(#
+    x = pca2$rotation[which(Label2$group_name == "monocyte_or_neutrophil"), 1],#
+    y = pca2$rotation[which(Label2$group_name == "monocyte_or_neutrophil"), 2],#
+    z = pca2$rotation[which(Label2$group_name == "monocyte_or_neutrophil"), 3],#
+    mode = "markers+text",#
+    name = "Monocyte",#
+    text = Label2$Well[which(Label2$group_name == "monocyte_or_neutrophil")],#
+    textfont = list(#
+      color = "rgb(102, 102, 102)",#
+      size = 7),#
+    marker = list(#
+      size = 12,#
+      line = list(#
+        color = "rgba(217, 217, 50, 0.14)",#
+        width = 0.5#
+      ),#
+      opacity = 0.8#
+    ),#
+    type = "scatter3d"#
+  )
+Monocyte
+data <- list(BCell, NKTCell, DC, Monocyte)
+data
+layout <- list(#
+    scene = list(#
+      xaxis = list(#
+        title = "1st Component",#
+        gridcolor = "rgb(255, 255, 255)",#
+        showbackground = TRUE,#
+        spikecolor = "rgb(102, 102, 102)",#
+        backgroundcolor = "rgb(210, 210, 210)"#
+        ),#
+      yaxis = list(#
+        title = "2nd Component",#
+        gridcolor = "rgb(255, 255, 255)",#
+        showbackground = TRUE,#
+        spikecolor = "rgb(102, 102, 102)",#
+        backgroundcolor = "rgb(210, 210, 210)"#
+        ),#
+      zaxis = list(#
+        title = "3rd Component",#
+        gridcolor = "rgb(255, 255, 255)",#
+        showbackground = TRUE,#
+        spikecolor = "rgb(102, 102, 102)",#
+        backgroundcolor = "rgb(210, 210, 210)"#
+        )#
+      ),#
+    margin = list(#
+      l = 0,#
+      r = 0,#
+      b = 0,#
+      t = 0#
+      )#
+  )
+response <- py$plotly(data, kwargs=list(layout=layout, filename="MARS-Seq", fileopt="overwrite"))
+url <- response$url#
+  url
+layout
+source("plotly_2.R")
+makePlotly(user,apikey)
+source("plotly_2.R")
+makePlotly2(user,apikey)
+Label
+Label2
+Label
+Label2
+which(Label2$group_name == "B cell")
+source("plotly_2.R")
+makePlotly2(user,apikey)
+makePlotly(user,apikey)
+pca2
+str(pca2)
+str(pca)
+str(Label)
+str(Label2)
 head(Count2[,1:10])
+head(Count[,1:10])
+dim(Count)
+dim(Count2)
+pca$rotation[which(Label$group_name == "B cell"), 1]
+pca2$rotation[which(Label$group_name == "B cell"), 1]
+pca2$rotation
+head(pca2$rotation[which(Label$group_name == "B cell"), 1])
+names(pca$rotation[,1])
+names(pca$rotation[1,])
+pca$rotation
+pca2$rotation
+pca$rotation
+rownames(pca2)
+rownames(pca2$rotation)
+rownames(pca2$rotation) <- NULL
+rownames(pca2$rotation)
+pca2$rotation
+source("plotly_2.R")
+makePlotly2(user,apikey)
+sessionInfo()
+1 + as.numeric(“1”)
+1 + as.numeric("1")
+ls()
+pca_data <- scale(t(Count[, 3:ncol(Count)]), scale=TRUE) # 正規化（平均値0, 分散1にする）#
+pca <- prcomp(pca_data)
+pca2 <- pca
+pca_data <- t(Count[, 3:ncol(Count)])#
+pca <- prcomp(pca_data, scale=TRUE)
+head(pca)
+equals.Object
+equals.Object(pca, pca2)
+source("exersise4.R")
+source("exersise1.R")
+source("exersise2.R")
+source("exersise3.R")
+source("exersise4.R")
+source("exersise5.R")
+source("plotly.R")
+makePlotly(user,apikey)
 source("exersise4_2.R")
-install.packages("rgl")#
-#
-# パッケージ読み込み#
-library("rgl")#
-#
-# データ読み込み#
-load("Count2.Rdata")#
-load("pca2.Rdata")#
-#
-# 主成分寄与率（14_1875除去後）#
-png(file="Contribution_PCA2.png")#
-plot(pca2$sdev/sum(pca2$sdev), xlab="Principal Components", ylab="Proportion  of Variance", main="Contribution rate of the Principal Component")#
-dev.off()
-# 細胞をソートする際の表面マーカーで色を付ける#
-Label2 <- data.frame(group_name=Count2$group_name, Well=Count2$Well, Color=NA)#
-#
-# B cell => オレンジ#
-Label2$Color[which(Label2$group_name == "B cell")] <- rgb(1, 0.25, 0, 0.5)#
-# NK T cell => 紫#
-Label2$Color[which(Label2$group_name == "NK_cell")] <- rgb(0.75, 0, 1, 0.5)#
-# pDC => 青#
-Label2$Color[which(Label2$group_name == "CD8+pDC")] <- rgb(0, 0, 1, 0.5)#
-# Monocyte => 黒#
-Label2$Color[which(Label2$group_name == "monocyte_or_neutrophil")] <- rgb(0, 0, 0, 0.5)
-# 細胞をソートする際の表面マーカーで色を付ける#
-Label2 <- data.frame(group_name=Count2$group_name, Well=Count2$Well, Color=NA)#
-#
-# B cell => オレンジ#
-Label2$Color[which(Label2$group_name == "B cell")] <- rgb(1, 0.25, 0, 0.5)#
-# NK T cell => 紫#
-Label2$Color[which(Label2$group_name == "NK_cell")] <- rgb(0.75, 0, 1, 0.5)#
-# pDC => 青#
-Label2$Color[which(Label2$group_name == "CD8+pDC")] <- rgb(0, 0, 1, 0.5)#
-# Monocyte => 黒#
-Label2$Color[which(Label2$group_name == "monocyte_or_neutrophil")] <- rgb(0, 0, 0, 0.5)
-# 細胞をソートする際の表面マーカーで色を付ける#
-Label2 <- data.frame(group_name=Count2$group_name, Well=Count2$Well, Color=NA)#
-#
-# B cell => オレンジ#
-Label2$Color[which(Label2$group_name == "B cell")] <- rgb(1, 0.25, 0, 0.5)#
-# NK T cell => 紫#
-Label2$Color[which(Label2$group_name == "NK_cell")] <- rgb(0.75, 0, 1, 0.5)#
-# pDC => 青#
-Label2$Color[which(Label2$group_name == "CD8+pDC")] <- rgb(0, 0, 1, 0.5)#
-# Monocyte => 黒#
-Label2$Color[which(Label2$group_name == "monocyte_or_neutrophil")] <- rgb(0, 0, 0, 0.5)
-# 細胞をソートする際の表面マーカーで色を付ける#
-Label2 <- data.frame(group_name=Count2$group_name, Well=Count2$Well, Color=NA)#
-#
-# B cell => オレンジ#
-Label2$Color[which(Label2$group_name == "B cell")] <- rgb(1, 0.25, 0, 0.5)#
-# NK T cell => 紫#
-Label2$Color[which(Label2$group_name == "NK_cell")] <- rgb(0.75, 0, 1, 0.5)#
-# pDC => 青#
-Label2$Color[which(Label2$group_name == "CD8+pDC")] <- rgb(0, 0, 1, 0.5)#
-# Monocyte => 黒#
-Label2$Color[which(Label2$group_name == "monocyte_or_neutrophil")] <- rgb(0, 0, 0, 0.5)
-plot3d(pca2$rotation[, 1:3], xlab="PC1", ylab="PC2", zlab="PC3", col=Label2$Color)
-plot3d(pca2$rotation[, 1:3], xlab="PC1", ylab="PC2", zlab="PC3", col=Label2$Color)#
-writeWebGL(dir="PCA_3d", width=500)
-plot3d(pca2$rotation[, 1:3], xlab="PC1", ylab="PC2", zlab="PC3", col=Label2$Color)#
-writeWebGL(dir="PCA_3d_2", width=500)
-source("plotly.R")
-makePlotly("antiplastics", "t04mhock2b")
-str(pca)
-head(pca$rotation)
-source("plotly.R")
-makePlotly("antiplastics", "t04mhock2b")
+source("exersise5_2.R")
+source("plotly_2.R.R")
+source("plotly_2.R")
+makePlotly2(user,apikey)
